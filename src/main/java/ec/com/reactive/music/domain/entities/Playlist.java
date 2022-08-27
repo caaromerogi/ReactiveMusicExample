@@ -13,6 +13,7 @@ import java.util.ArrayList;
 @AllArgsConstructor
 @Setter
 @Getter
+@Builder(toBuilder = true)
 @Document(collection = "Playlist")
 @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="HH:mm:ss")
 public class Playlist {
@@ -20,6 +21,20 @@ public class Playlist {
     private String idPlaylist;
     private String name;
     private String username;
-    private ArrayList<Song> songs;
+    private ArrayList<Song> songs = new ArrayList<>();
     private LocalTime duration;
+
+    public void addSong(Song song){
+        songs.add(song);
+    }
+
+    public void deleteSong(Song song){
+        songs.remove(song);
+    }
+
+    public void addDuration(LocalTime duration){
+        this.duration = duration.plusHours(this.duration.getHour())
+                .plusMinutes(this.duration.getMinute());
+    }
+
 }
