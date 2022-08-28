@@ -23,6 +23,6 @@ public class Album {
     private String name;
     private String artist;
     private Integer yearRelease;
-    //private ArrayList<Song> songs=new ArrayList<>();
+    private ArrayList<Song> songs=new ArrayList<>();
 
 }
